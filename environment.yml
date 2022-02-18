@@ -4,3 +4,5 @@ channels:
 dependencies:
   - jupyter
   - pip
+  - cv2
+  - os
