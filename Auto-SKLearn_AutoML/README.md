@@ -1,66 +1,74 @@
- # Auto-sklearn AutoML Installation instructions
+# Auto-sklearn AutoML Installation instructions
 
-***Note, below was an installation written for another package Brandon wrote 
-for another project. This will be updated to reflect Auto-Sklearn at a later time.
-Currently, we are still working on getting our whole team to have the ability to
-download this package. Once directions are solidified this will be updated.
-For the mean time, below will have a pretty similar set up. To avoid a failed
-installation on Windows Machienes we are using the HPCC. We  will have our own
-seperate enviroment.yaml file to ensure that this does not effect future Windows
-users of main directory.***
+Due to the nature of Auto-SKlearn, the package is not currently supported on Windows Machienes.
+It is 2/18/2022, so it could be possible this has changed if you are viewing this in the future.
+This being said, an installation guide for how to get this running on the HPCC is
+included. If you are running macOS, you can possible just create the enviroment from
+the `auto_sklearn_env.yaml` file in this folder. For Windows machienes, you recommened to run
+this on the HPCC. If you have anaconda running on \*uniux on your machiene, you can use
+that instead and just create the enviroment from the yaml file.
 
-[`PyTorch`](https://pytorch.org/) is a popular software/package for 
-tensor computation and construction of Neural Networks. It is a pacakge for python, 
-as well as C++. The software is also
-[open source](https://github.com/pytorch/pytorch) and has a rich community 
-that has a plethora of tutorials on how to use many of the features. One of 
-`PyTorch`'s strengths is that it can utilize GPUs to perform calculations. 
-This allows for significant speed up in training and computation. One thing 
-that is interesting is the code is "not a Python binding into a monolithic 
-C++ framework. It is built to be deeply integrated into Python." `PyTorch` 
-also has many libraries such as [`torchaudio`](https://pytorch.org/audio/stable/index.html) 
-for audio, [`torchtext`](https://pytorch.org/text/stable/index.html) for text, 
-[`torchvision`](https://pytorch.org/vision/stable/index.html) for computer vision, 
-[`TorchElastic`](https://pytorch.org/elastic/0.2.1/index.html) for running on 
-changing environments, [`TorchServe`](https://pytorch.org/serve/) for serving 
-`PyTorch` models. This package is great for projects that require large amounts
-of computation through neural networks, such as neural networks that take in images. 
+IF YOU ARE MACOS or LINUX USER:
+Run the following in your terminal
+
+```bash
+conda env create --prefix ./envs --file auto_sklearn_env.yml
+conda activate ./auto_sklearn_env
+jupyter notebook
+```
+
+WINDOWS MACHIENES CONTINUE BELOW
 
 ## ANACONDA SET UP:
 
 In order to run this example easily, it is suggested that Anaconda 3 with python 
-version 3.6 or higer is used. With using Anaconda, since many python pacakges
-are already installed and conda is pre-installed, the setup will be less intensive.
+is used. With using Anaconda, since many python pacakges are already installed 
+and conda is pre-installed, the setup will be less intensive.
 
-If you already have Anaconda 3 with python version 3.6 or higher, you can skip
+If you already have Anaconda 3 with python, you can skip
 to Virtual Enviroment Setup.
 
-Below are instructions on how to install Anaconda 3 with python version 3.8 on
+Below are instructions on how to install Anaconda 3 with python version 3.9 on
 the HPCC. We will also set up a new virtual enviroment with the packages we 
 will need to install to get our example working. Please note this would probably
 work best if you can keep this README.md open and also have access to a terminal
 in another window.
 
-### INSTALL Anaconda 3 w/ Python 3.8:
+### INSTALL Anaconda 3 w/ Python 3.9 on HPCC:
 
-The following was created on 3/22/2021. It is possbile at the time you are reading
-this the Anaconda version has updated. If this is the case, visit Anconda's website
-and use the link to the newest Anconda version in place of the link below. Also
-make sure to change the bash command to run the appropiate script.
+The following was created on 2/18/2022. It is possbile at the time you are reading
+this the Anaconda version has updated. If this is the case, visit [Anconda's website](https://www.anaconda.com/products/individual#:~:text=environments%2C%20and%20packages.-,Anaconda%20Installers,-Windows)
+and use the link to the newest Anconda version in place of the link below. Note you
+can find the download link by going to the Anaconda Website. Finding where you can 
+download Anaconda. You will see there is a linux option something like 
+"64-Bit (x86) Installer (XXX MB)". Right click on this and copy the link it directs
+you to (do not actually follow the link). This will be the link you change in the `curl` command below. Also
+make sure to change the `bash` command to run the appropiate script. You can easily
+see what this by looking at the end of the link. In this case it is 
+`Anaconda3-2021.11-Linux-x86_64.sh`
+
+You will need access to the HPCC. If this is Spring 2022, you will have access to the
+HPCC if you apart of CMSE 495. If this is not Spring 2022, check with your Instructor
+to see if you have access to the HPCC.
+
+To access HPCC visit [this site](https://icer.msu.edu/web-portal-hpcc-resources) and click on the link to OnDemand.
+Once logged in, find the tab on top that says something like "Devleopment Node".
+Click on this tab, and select any development node. You now will have access to a shell
+and can run the following commands.
 
 1. In your home directory (~), or wherever you would like,
 you will want to download the installation script from Anaconda's website. 
 This can easily be done with this command.
 
 ```bash
-curl -O https://repo.anaconda.com/archive/Anaconda3-2020.11-Linux-x86_64.sh
+curl -O https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
 ```
 
 2. Next we need to run the installation script. To do this makes sure you are
 in the same directory as the file we just downloaded. Then run the following.
 
 ```bash
-bash Anaconda3-2020.11-Linux-x86_64.sh
+bash Anaconda3-2021.11-Linux-x86_64.sh
 ```
 
 3. The installation process will ask you a few things
@@ -76,21 +84,22 @@ assumes this is installed in the home directory. You may neeed to modify
 directions later based on where you save anaconda3.
 
 7. Once finished installing, it will ask if you would like the installer to 
-initalize Anaconda3. For using this as a module, you are going to want 
-to say "No". However, if you want Anaconda3 always avalible to you anytime, 
-you can say "yes" to this.
+initalize Anaconda3. In order to allow for the most future flexibility.
+You will type "No". (You can say "yes", however, when you need to run different
+versions of anaconda. You will need to comment out the "conda initalize" commands that are
+placed in your `~/.bashrc`)
 
-8. You can now delete or move the `Anaconda3-2020.11-Linux-x86.sh` file to 
-wherever you would like.
-
-9. Now you can load in Anaconda 3 with the following command.
+8. Now we will need to activate our Anaconda with running
 
 ```bash
 module load Anaconda/3
 ```
 
-10. You can test that the installation worked properly if the follwing command 
-returns `conda 4.9.2` or something equivalent.
+9. You can now delete or move the `Anaconda3-2021.11-Linux-x86_64.sh` file to 
+wherever you would like.
+
+10. You can test that the installation worked properly if the following command 
+returns `conda 4.10.3` or something equivalent.
 
 ```bash
 conda --version
@@ -98,131 +107,79 @@ conda --version
 
 ### Virtual Enviroment Setup: 
 
-From the last section, make sure you Anaconda 3 is active. If you followed the
-process above this was done with 
+From the last section, make sure you Anaconda 3 is active (Make sure you have ran `module load Anaconda/3` prior)
 
 ```bash
-module load Anaconda/3
 conda --version
 ```
-
 If a version number was given you are good to go.
 
-There are two routes to go from here. Either you can load the enviroment included
-or you can create a new enviroment
+We will now create the enviroment, and set ourselves up to launch a Jupyter Notebook.
 
-**Load the Enviroment from yml**
+**Load the Enviroment from the yml file**
 
-Loading the enviroment allows you to use the same exact enviroment I used to 
+Loading the enviroment yaml file allows you to use the same exact enviroment we used to 
 run the code
 
 1. In the terminal navigate to the same folder this README.md is in 
-(`/pytorch_classifier`).
+(`/Auto-SKLearn_AutoML`).
 
-2. You can create the enviroment from the `pytorch_classifier.yml` file with
+2. You can create the enviroment from the `auto_sklearn_env.yml` file with
 ```bash
-conda env create -f pytorch_classifier.yml
+conda env create -f auto_sklearn_env.yml
 ```
 
-3. To activate the enviroment we can use
-```bash
-conda activate pytorch_classifier
-```
+**Launching Jupyter Notebook with auto_sklearn_env**
 
-**Create new Enviroment**
+We can start a "Jupyter Notebook Interactive App" on OnDemand to access our
+Jupyter Notebook and using settings we can tell it to use the appropiate enviroment.
 
-Setting up a new virtual enviroment will help keep your base Anaconda enviroment 
-clean so that way you can have seperate enviroment where we can install our 
-packages and not have to worry about them conflicting in the future with other
-packages.
+1. Open up Ondemand and find the "Interactive Apps" tab and click on "Jupyter Notebook"
 
-1. In the terminal navigate to the same folder this README.md is in 
-(`/pytorch_classifier`).
+There is a list of setting to change, here is what we put, but you can change hours/cores/memory/advanced
+setings as needed.
 
-2. Now we can create our new enviroment with this command.
-```bash
-conda create -n pytorch_classifier pytorch torchvision requests cudatoolkit=10.2 -c pytorch
-```
+* Number of hours: 2
+* Number of cores per task: 1
+* Amount of memory: 5gb
+* CHECK: Launch Jupyter Notebook using the Anaconda installation in my home directory
+* Anaconda Path: anaconda3
+* Conda Environment: auto_sklearn_env
 
-3. We are now able to activate our enviroment with 
-```bash
-conda activate pytorch_classifier
-```
+2. Now click launch. Wait for the the job to make it through the "Quded". Then it should say
+"Starting". It should take less than 3 min to start. If you are waiting anylonger please make
+sure you followed the above steps exactly. If successful, it should now say "Running". There
+will be a Blue button that says "Connect to Jupyter". Click that and you will have successfully
+launched Jupyter Notebooks with our enviroment that has Auto-sklearn pre-installed!
+
+3. Navigate to this repository and run our examples.
 
 **Notes**
 
-Note that when you are done and want to get out of this enviroment you can use
+In the future you would like to delete the enviroment you can use
 ```bash
-conda deactivate
+conda env remove -n auto_sklearn_env
 ```
 
-Also if in the future you would like to delete the enviroment you can use
-```bash
-conda env remove -n pytorch_classifier
-```
+Also if you are interest in using Jupyter Notebooks Interactive App on OnDemand in
+general and want to use the "base" anaconda. You can change "Conda Environment"
+in the settings to be "base".
 
-## Module Setup
 
-In order to take full advantage of this example, it is suggested to use a
+## (OPTIONAL) GPU Setup
+
+In order to take full advantage of GPU with Auto-SKlean, it is suggested to use a
 developer node with GPU access (`dev-intel16-k80`,
-`dev-amd20-v100` ---- Note that `dev-intel14-k20` does not work with this
-example).
+`dev-amd20-v100` ---- Note that `dev-intel14-k20` most likely not work with this
+example). This can be set with the Jupyter Notebook Interactive App setting in the 
+Advanced Options. Set "Node Type" to `intel16` or `intel14` and change 
+"Number of GPUs" to 1 or more.
 
-If Anaconda 3 is installed with the appropiate package and enviroment from above.
-We can load Anaconda 3 with `pytorch_classifier` enviroment as
-```bash
-module load Anaconda/3
-conda activate pytorch_classifier
-```
+(Optional if GPU does not work, with just the settings above)
+We need to load the appropiate modules for use of CUDA. In your `~/.bashrc`
+add the following commands to the end of the file.
 
-Next, we need to load the appropiate modules for use of CUDA
 ```bash
 module load GCC/8.3.0
 module load CUDA/10.2.89
 ```
-
-## Running the Code
-
-The code comes from [this tutorial](https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py)
-I simply just combined it into one script and implemented GPU usage.
-
-To run the code is simple. I have included a makefile to streamline the process.
-
-In order to start the program simply run
-```
-make
-```
-
-This should autodetect if you are on a node with GPU and run the appropiate
-version of the code.
-
-The code will train a deep neural network with 10000 images.
-The network will then be tested with 10000 images.
-The results of the classification are then printed at the end.
-
-The program will produce the following:
- * `/data` --  folder containing data for training and testing model
- * `training.png` -- Sample grid of training images
- * `testing.png` -- Sample grid of testing images 
- * `cifar_net.pth` -- Trained Neural Network 
-
-These files can easily be deleted with this command
-```
-make clean
-```
-
-If you would like to run this as a HPCC job, you can use the command
-```
-sbatch classifier.sb
-```
-
-This concludes this README, below is references
-
-# References
-
-Code:  
-https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py  
-
-Conda Enviroments:  
-https://towardsdatascience.com/a-guide-to-conda-environments-bc6180fc533#e814
-https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#removing-an-environment
