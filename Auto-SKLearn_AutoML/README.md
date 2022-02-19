@@ -146,7 +146,7 @@ setings as needed.
 * Anaconda Path: anaconda3
 * Conda Environment: auto_sklearn_env
 
-2. Now click launch. Wait for the the job to make it through the "Quded". Then it should say
+2. Now click launch. Wait for the the job to make it through the "Queued". Then it should say
 "Starting". It should take less than 3 min to start. If you are waiting anylonger please make
 sure you followed the above steps exactly. If successful, it should now say "Running". There
 will be a Blue button that says "Connect to Jupyter". Click that and you will have successfully
