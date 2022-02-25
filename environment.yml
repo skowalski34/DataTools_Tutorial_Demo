@@ -1,0 +1,6 @@
+name: envs
+channels:
+  - defaults
+dependencies:
+  - jupyter
+  - pip
