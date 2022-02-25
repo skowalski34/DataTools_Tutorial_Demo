@@ -1,0 +1,11 @@
+name: envs
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - jupyter
+  - pip
+  - pip:
+    - numpy
+    - opencv-python
