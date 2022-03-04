@@ -1,2 +1,2 @@
 init:
-	conda env create -f environment.yml
+	conda env create --prefix=./envs -f environment.yml
