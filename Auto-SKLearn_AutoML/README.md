@@ -11,7 +11,7 @@ See here for [more information](https://automl.github.io/auto-sklearn/master/)
 
 Perhaps the easiest way to use autosklearn is to use Google Collab.
 
-![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mcint170/DataTools_Tutorial_Demo/blob/main/Auto-SKLearn_AutoML/Classification.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mcint170/DataTools_Tutorial_Demo/blob/main/Auto-SKLearn_AutoML/Classification.ipynb)
 
 ## Linux Installation
 
