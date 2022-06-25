@@ -6,3 +6,7 @@ This notebook includse an environment.yml file. Create and activate an enviornme
 conda env create --prefix ./envs --file environment.yml
 conda activate ./envs
 
+If you are new to git please review the following self guided curriculum:
+
+- [Git Guide](https://msu-cmse-courses.github.io/cmse802-f20-student/0000--Jupyter-Getting-Started-Guide.html)
+
