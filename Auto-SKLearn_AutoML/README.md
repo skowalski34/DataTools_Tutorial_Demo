@@ -1,15 +1,24 @@
 # Auto-sklearn AutoML Installation instructions
 
-Due to the nature of Auto-SKlearn, the package is not currently supported on Windows Machienes.
-It is 2/18/2022, so it could be possible this has changed if you are viewing this in the future.
-This being said, an installation guide for how to get this running on the HPCC is
-included. If you are running macOS, you can possible just create the enviroment from
-the `auto_sklearn_env.yaml` file in this folder. For Windows machienes, you recommened to run
-this on the HPCC. If you have anaconda running on \*uniux on your machiene, you can use
-that instead and just create the enviroment from the yaml file.
+## Description
 
-IF YOU ARE MACOS or LINUX USER:
-Run the following in your terminal
+Auto-Sklearn is a Auto Machine Learning Library built ontop of the sklearn library.
+See here for [more information](https://automl.github.io/auto-sklearn/master/)
+
+*Note:* Due to the nature of Auto-SKlearn, the package is not currently supported on Windows or macOS Machines.
+
+## Running on Google Collab
+
+Perhaps the easiest way to use autosklearn is to use Google Collab.
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mcint170/DataTools_Tutorial_Demo/blob/main/Auto-SKLearn_AutoML/Classification.ipynb)
+
+## Linux Installation
+
+If you are running Linux, you can create an enviroment from the `auto_sklearn_env.yaml` file in this folder. 
+
+You will need to [Anaconda installed](https://docs.anaconda.com/anaconda/install/linux/)
+Run the following in your terminal.
 
 ```bash
 conda env create --prefix ./envs --file auto_sklearn_env.yml
@@ -17,9 +26,11 @@ conda activate ./auto_sklearn_env
 jupyter notebook
 ```
 
-WINDOWS MACHIENES CONTINUE BELOW
+## HPCC Access
 
-## ANACONDA SET UP:
+For Windows or macOS machines, you are recommended to run this on the HPCC.
+
+### ANACONDA SET UP:
 
 In order to run this example easily, it is suggested that Anaconda 3 with python 
 is used. With using Anaconda, since many python pacakges are already installed 
