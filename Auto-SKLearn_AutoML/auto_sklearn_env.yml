@@ -1,6 +1,8 @@
-name: envs
+name: auto_sklearn_env
 channels:
   - defaults
 dependencies:
   - jupyter
   - pip
+  - pip:
+    - auto-sklearn
